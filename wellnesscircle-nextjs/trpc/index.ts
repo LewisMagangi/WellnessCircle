@@ -2,7 +2,12 @@ import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 import { publicProcedure, router } from './trpc';
 import { TRPCError } from '@trpc/server';
 import { db } from '@/db'
-import { User } from '@prisma/client';
+
+// Define the type for the user object
+interface User {
+    id?: string;
+    email?: string;
+}
 
 export const appRouter = router({
     authCallback: publicProcedure.query(async () => {
